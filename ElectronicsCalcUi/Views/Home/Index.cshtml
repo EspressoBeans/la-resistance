@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Resistor Calculator";
+}
+
+<div class="jumbotron">
+    <h2>Resistance Calculator</h2>
+    <p class="lead">Convert resistor bands color combination into Ohm value.  This calculator converts 1, 3, 4, & 5 band type resistors.  
+    Select a band color and the values will automatically update.  The first band color of a multi-band resistor cannot be Black</p>
+</div>
+
+<div class="row centered image-row">
+    <div class="resistor-bg">
+        <div class="band-values">
+        </div> 
+        <div class="band-multiplier">
+        </div>
+        <div class="band-tolerance">
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="table-container">
+        <table class="table-resistor">
+            <tr>
+                <td class="table-label">Resistance:</td>
+                <td class="table-value" id="resistance"></td>
+            </tr>
+            <tr>
+                <td class="table-label">Tolerance:</td>
+                <td class="table-value" id="tolerance"></td>
+            </tr>
+            <tr>
+                <td class="table-label">Minimum:</td>
+                <td class="table-value" id="low"></td>
+            </tr>
+            <tr>
+                <td class="table-label">Maximum:</td>
+                <td class="table-value" id="high"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row centered">
+    <div class="band-selection-container">
+        <div class="band-combobox-sigfigs inline-block">
+            <div class="band-desc">
+                Significant Figures
+                <div class="sigfig-buttons">
+                    <button id="add-band" class="add-band btn btn-outline-light" type="button"><i class="fas fa-plus-circle"></i></button>
+                    <button id="rem-band" class="rem-band btn btn-outline-light" type="button"><i class="fas fa-minus-circle"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="band-combobox-multiplier inline-block">
+            <div class="band-desc">Multiplier</div>
+        </div>
+        <div class="band-combobox-tolerance inline-block">
+            <div class="band-desc">Tolerance</div>
+        </div>
+    </div>
+</div>

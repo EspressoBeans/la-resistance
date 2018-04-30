@@ -1,0 +1,200 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+div.centered {
+    align-items: center;
+    justify-content: center;
+}
+
+/*div.resistor-bg{
+    float:left;
+    position:relative;
+}*/
+
+.image-row{
+    padding-bottom:32px;
+}
+
+.resistor-bg {
+    display:flex;
+    background-image: url("images/resistor.png");
+    background-repeat: no-repeat;
+    height:190px;
+    width:570px;
+    align-items:center;
+    justify-content:center;
+}
+
+
+div.band-values {
+    height: 122px;
+    align-items: center;
+    justify-content: center;
+}
+
+div.band-multiplier {
+    margin-left:3px;
+    height: 122px;
+}
+
+div.band-tolerance {
+    margin-left:70px;
+    height: 122px;
+    align-items: center;
+    justify-content: center;
+}
+
+div.band {
+    display:inline-block;
+    height: 100%;
+    width: 30px;
+    background-color: white;
+    /*background: linear-gradient(lightgrey, black, black, black, black);*/
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.band-buttons{
+    position:relative;
+    height:62px;
+    width:80%;
+}
+
+.lightgrey-outline{
+    border:1px solid lightgrey;
+    border-radius:6px;
+}
+
+.sigfig-buttons{
+    display:inline;
+    float:right;
+}
+
+.sigfig-buttons button{
+    padding:0 !important;
+    margin-top:-4px;
+    border-color:transparent !important;
+}
+
+
+.add-band{
+    /*font-size:2em;*/
+    color:green;
+}
+
+.rem-band {
+    /*font-size: 2em;*/
+    color: tomato;
+}
+
+.calc-band {
+    font-size: 1.5em;
+    padding: 12px;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+}
+
+.band-selection-container{
+    /*height:40px;*/
+    width:100%;
+    padding-left:15px;
+    padding-right:15px;
+}
+
+.band-list.input{
+    width:33%;
+}
+
+.band-combobox{
+    width:30%;
+}
+.band-combobox-sigfigs{
+    /*border:1px solid red;*/
+    width:58%
+}
+.band-combobox-multiplier {
+    /*border: 1px solid green;*/
+    width: 20%;
+}
+.band-combobox-tolerance {
+    /*border: 1px solid blue;*/
+    width: 20%;
+}
+
+.band-combobox-sigfigs .band-combobox{
+    margin-right: 6px;
+}
+
+.band-desc {
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 4px;
+    padding: 4px 4px;
+    margin-bottom: 6px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.hidden{
+    display:none !important;
+}
+
+option{
+    line-height:1em !important;
+}
+
+.table-container{
+    border:1px solid lightgrey;
+    border-radius: 8px;
+    padding:10px;
+    margin:15px;
+    width:260px;
+}
+
+.table-resistor{
+    width:100%;
+}
+
+.table-container tr{
+    width:50%;
+}
+
+.table-label{
+    font-weight:bold;
+    font-size:1.2em;
+}
+
+.table-value{
+    font-size:1.2em;
+}
