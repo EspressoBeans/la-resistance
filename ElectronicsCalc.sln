@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsCalcApi", "Elect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsCalcUi", "ElectronicsCalcUi\ElectronicsCalcUi.csproj", "{3A18F034-A328-4C18-8C71-0F668478CC15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsTest", "ElectronicsTest\ElectronicsTest.csproj", "{3DCEE731-B6A3-4F0E-8811-4FE637BB1D4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicsCalcTest", "ElectronicsCalcTest\ElectronicsCalcTest.csproj", "{3DCEE731-B6A3-4F0E-8811-4FE637BB1D4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

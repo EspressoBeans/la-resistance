@@ -221,20 +221,23 @@ $(document).ready(function () {
         //find out how many zeros are are in the string
         var string = number.toString();
         if (number >= 1000) {  //only format if number is greater than a thousand.
-            var zeros = string.match(/0/gi).length;
-            var zerogroups = Math.floor(zeros / 3);
+            var hasZeros = string.match(/0/gi);  //can't do .length on null, so we'll check if zeros exist.
+            if (hasZeros) {
+                var zeros = string.match(/0/gi).length;
+                var zerogroups = Math.floor(zeros / 3);
 
-            if (zerogroups >= 1) {
-                var sizes = ['K', 'M'];
-                var i;
-                var j = 0;
-                for (i = 0; i < (zerogroups); i++) {
-                    if (i < 2) {  //only for first two iterations.
-                        j++;  //use second var so that we don't pass two, since zerogroups can be greater than two.
-                        string = string.slice(0, -3);  //remove the trailing zeros
+                if (zerogroups >= 1) {
+                    var sizes = ['K', 'M'];
+                    var i;
+                    var j = 0;
+                    for (i = 0; i < (zerogroups); i++) {
+                        if (i < 2) {  //only for first two iterations.
+                            j++;  //use second var so that we don't pass two, since zerogroups can be greater than two.
+                            string = string.slice(0, -3);  //remove the trailing zeros
+                        }
                     }
+                    string = string + sizes[j - 1];  //depending on how many groups of zeros were removed, concat string with K or M.
                 }
-                string = string + sizes[j-1];  //depending on how many groups of zeros were removed, concat string with K or M.
             }
         }
         return string;
@@ -246,5 +249,31 @@ $(document).ready(function () {
             .toString(16)
             .substring(1);
     }
+
+    //isInteger is not supported in some versions of IE added the polyfill
+    Number.isInteger = Number.isInteger || function (value) {
+        return typeof value === "number" &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+    };
+
+
+    //.remove() quirky with IE versions tested, so added polyfill
+    (function (arr) {
+        arr.forEach(function (item) {
+            if (item.hasOwnProperty('remove')) {
+                return;
+            }
+            Object.defineProperty(item, 'remove', {
+                configurable: true,
+                enumerable: true,
+                writable: true,
+                value: function remove() {
+                    this.parentNode.removeChild(this);
+                }
+            });
+        });
+    })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+
 });
 

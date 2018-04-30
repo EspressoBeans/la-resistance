@@ -200,8 +200,8 @@ C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\bin\Microsoft.AI.DependencyColl
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\bin\Microsoft.AI.WindowsServer.xml
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\bin\Microsoft.AI.Web.xml
-C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.csprojResolveAssemblyReference.cache
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.csproj.CoreCompileInputs.cache
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.csproj.CopyComplete
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.dll
 C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.pdb
+C:\SourceCode\ElectronicsCalc\ElectronicsCalcApi\obj\Debug\ElectronicsCalcApi.csprojResolveAssemblyReference.cache

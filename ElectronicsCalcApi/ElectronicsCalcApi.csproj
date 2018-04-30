@@ -165,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\CalcEngine.cs" />
+    <Compile Include="Infrastructure\Utilities.cs" />
     <Compile Include="Models\OhmModel.cs" />
     <Compile Include="Models\ResistanceColorCodes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

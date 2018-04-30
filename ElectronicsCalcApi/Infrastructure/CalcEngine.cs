@@ -121,12 +121,7 @@ namespace ElectronicsCalcApi.Infrastructure
         /// <param name="high"></param>
         public void CalculateOhmValue(List<string> bandColors, out decimal resistance, out decimal tolerance, out decimal low, out decimal high)
         {
-            //throw new NotImplementedException();
 
-
-            //1. read ResistanceColorCodes table from database into iqueryable collection
-            int iOhms;
-            decimal multiplier;
             string sigfigs = string.Empty;
 
             resistance = 0;
@@ -134,37 +129,52 @@ namespace ElectronicsCalcApi.Infrastructure
             low = 0;
             high = 0;
 
+            OhmCalcModel ocm = new OhmCalcModel();
+            //populate ocm
+
+
             //single banded resistors only indicate value of resistance with single significant figure
             if (bandColors.Count == 1)
             {
-                decimal ohm = _repository.Get(bandColors[0]).SignificantFigure ?? 0;  //extract value
-                resistance = low = high = ohm;  //set all values to same
+                //populate the list of sigfigs
+                foreach (var color in bandColors)
+                {
+                    ocm.significantFigures.Add(_repository.Get(color).SignificantFigure ?? 0);                    
+                }
+
+                //calculate the actual values.
+                OhmValuesModel ovm = Utilities.DoCalc(ocm);
+
+                resistance = ovm.ohms;
+                low = (ovm.low ?? 0);
+                high = (ovm.high ?? 0);
+                tolerance = (ovm.tolerance ?? 0);
             }
             //banded resistors are not manufactured with band counts of 2 or greater than 6
             else if ((bandColors.Count >= 3) && (bandColors.Count < 6))
             {
                 //the last 2 bands (for resistors with 3 to 5 bands), represent multiplier and tolerance respectively.
-                multiplier = (_repository.Get(bandColors[bandColors.Count - 2]).Multiplier ?? 0);
-                tolerance = (_repository.Get(bandColors[bandColors.Count - 1]).Tolerance ?? 0);
+                ocm.multiplier = (_repository.Get(bandColors[bandColors.Count - 2]).Multiplier ?? 0);
+                ocm.tolerance = (_repository.Get(bandColors[bandColors.Count - 1]).Tolerance ?? 0);
 
                 //now remove the last 2 from List so that just significant figures bands remain
                 bandColors.RemoveAt(bandColors.Count - 1);
                 bandColors.RemoveAt(bandColors.Count - 1);
 
-                for (int i = 0; i < bandColors.Count; i++)
+                //populate the list of sigfigs
+                foreach (var color in bandColors)
                 {
-                    sigfigs += (_repository.Get(bandColors[i]).SignificantFigure ?? 0).ToString();
+                    ocm.significantFigures.Add(_repository.Get(color).SignificantFigure ?? 0);
                 }
 
-                if (int.TryParse(sigfigs, out iOhms) && (iOhms > 0))
-                {
-                    //sigfig bands converted to number, multiply parsed number with multiplier value, set ohms value as decimal to retain numbers on each side of decimal place.
-                    resistance = iOhms * multiplier;
+                //calculate the actual values.
+                OhmValuesModel ovm = Utilities.DoCalc(ocm);
 
-                    //now calculate the low and high tolerace
-                    low = resistance - (resistance * tolerance);
-                    high = resistance + (resistance * tolerance);
-                }
+                resistance = ovm.ohms;
+                low = (ovm.low ?? 0);
+                high = (ovm.high ?? 0);
+                tolerance = (ovm.tolerance ?? 0);
+
             }
             else if ((bandColors.Count == 6))
             {

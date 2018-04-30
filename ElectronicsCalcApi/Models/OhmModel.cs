@@ -25,4 +25,17 @@ namespace ElectronicsCalcApi.Models
         public decimal? low { get; set; }
         public decimal? high { get; set; }
     }
+
+    public class OhmCalcModel
+    {
+        //need to init the list when instantiating.
+        public OhmCalcModel()
+        {
+            List<int> _listString = new List<int>();
+            significantFigures = _listString;
+        }
+        public List<int> significantFigures { get; set; }
+        public decimal multiplier { get; set; }
+        public decimal tolerance { get; set; }
+    }
 }
