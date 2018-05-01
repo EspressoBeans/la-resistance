@@ -1,7 +1,7 @@
 # la-resistance
 ASP.NET C# MVC5 Application
 
-What you've happened upon is a C# ASP.NET application developed as a code challenge.  The goal of the challenge was to provide a .NET full stack solution to calculating resistor Ohm value based on the color coded bands found on common resistor electrical components.
+What you've happened upon is a C# ASP.NET application developed as a code challenge.  The goal of the challenge was to provide a .NET full stack solution to calculating resistor Ohm value based on the color coded bands found on common resistor electrical components, as described here: https://en.wikipedia.org/wiki/Electronic_color_code.
 
 This Visual Studio 2017 solution has 3 projects: an <b>API</b>, a <b>UI</b>, and a Unit/Integrations <b>Test</b> project.
 
