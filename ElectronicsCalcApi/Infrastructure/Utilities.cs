@@ -34,7 +34,11 @@ namespace ElectronicsCalcApi.Infrastructure
             if (int.TryParse(sigfigs, out iOhms) && (iOhms > 0))
             {
                 //sigfig bands converted to number, multiply parsed number with multiplier value, set ohms value as decimal to retain numbers on each side of decimal place.
-                ovm_output.ohms = iOhms * ocm_input.multiplier;
+                ovm_output.ohms = iOhms;
+                if (ocm_input.significantFigures.Count() > 1)
+                {
+                    ovm_output.ohms = iOhms * ocm_input.multiplier;
+                }
 
                 //now calculate the low and high tolerace
                 ovm_output.low = ovm_output.ohms - (ovm_output.ohms * ocm_input.tolerance);

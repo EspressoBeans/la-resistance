@@ -24,7 +24,7 @@ namespace ElectronicsCalcApi.Controllers.Tests
         {
             //arrange
             List<string> colors = new List<string>();
-            colors.Add("Black");
+            colors.Add("Violet");
 
             OhmBandsListModel ohmBands_input = new
                 OhmBandsListModel
@@ -34,10 +34,10 @@ namespace ElectronicsCalcApi.Controllers.Tests
 
             OhmValuesModel ohmValues_check = new OhmValuesModel
             {
-                ohms = 0,
+                ohms = 7,
                 tolerance = 0,
-                low = 0,
-                high = 0
+                low = 7,
+                high = 7
             };
 
 
@@ -95,7 +95,6 @@ namespace ElectronicsCalcApi.Controllers.Tests
             };
 
             //assert
-            //Assert.IsTrue(true);  //if it gets here the test passed.
             //we shouldn't test equality with data in a database, demo project.
             Assert.AreEqual(ohmValues_check.ohms, ohmValues_output.ohms);
             Assert.AreEqual(ohmValues_check.tolerance, ohmValues_output.tolerance);

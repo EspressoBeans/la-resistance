@@ -54,9 +54,7 @@ $(document).ready(function () {
         $div.append($select);
         cboSignificantFigures = $div.prop('outerHTML');  //keep template for later.
 
-        //$div.find("option[value='0']").remove(); //the default and first combobox cannot have black (0) value.
         $('.band-combobox-sigfigs').append($div);
-
 
         var $band = $().add('<div>').attr('id', id).addClass('band');
         $band.css('background', 'linear-gradient(lightgrey, black, black, black, black)');
@@ -125,16 +123,15 @@ $(document).ready(function () {
 
 
     $('#add-band').on('click', function () {
-
-        if ($('.band-combobox-sigfigs').find('.band-combobox').length < 3) {
+        var bandsCount = $('.band-combobox-sigfigs').find('.band-combobox').length;
+        //if ($('.band-combobox-sigfigs').find('.band-combobox').length < 3) {
+        if (bandsCount < 3) {
             var id = s4();
             var template = cboSignificantFigures;
             var cbo = $(template).closest('div.band-combobox')
             $(cbo).attr('id', id);
-
-            $(cbo).find("option[value='0']").remove();
+            $(cbo).find("option[value='0']").remove(); 
             $(cbo).insertAfter($(".band-combobox-sigfigs").find('.band-desc'))
-
             var $band = $().add('<div>').attr('id', id).addClass('band');
             $band.css('background', 'linear-gradient(lightgrey, brown, brown, brown, black)');
             $('.band-values').prepend($band);
@@ -182,6 +179,13 @@ $(document).ready(function () {
 
     //update fields with values.
     function updateOhms() {
+
+        //initialize fields
+        $("#resistance").html('');
+        $("#tolerance").html('');
+        $("#low").html('');
+        $("#high").html('');
+
         var ohmbands = {};
         ohmbands.bandColors = []
 
@@ -200,19 +204,28 @@ $(document).ready(function () {
 
         //there are no such thing as 2 band resistors.
         if (ohmbands.bandColors.length != 2) {
-            $.post(baseUrl + "api/GetResistorValues/array", ohmbands).done(function (data) {
-                obj = data;
-                $("#resistance").html(convert(obj.ohms) + ' Ω');
-                $("#tolerance").html('± ' + obj.tolerance + '%');
-                $("#low").html(convert(obj.low) + ' Ω');
-                $("#high").html(convert(obj.high) + ' Ω');
-            });
-        }
-        else {
-            $("#resistance").html('');
-            $("#tolerance").html('');
-            $("#low").html('');
-            $("#high").html('');
+
+            //count how many sigfigs
+            var s = $('.band-combobox-sigfigs').find('.band-combobox').length;
+
+            //check if multiplier and tolerance have been set.
+            var b = false;
+            if  ($('.band-combobox-multiplier').find('.band-combobox select option:selected').html().length > 0 &&
+                 $('.band-combobox-tolerance').find('.band-combobox select option:selected').html().length > 0)
+            {
+                b = true;
+            }
+
+            //make sure that if there are more than one band, then multiplier and tolerance should be set
+            if ((s == 1) || b) {
+                $.post(baseUrl + "api/GetResistorValues/array", ohmbands).done(function (data) {
+                    obj = data;
+                    $("#resistance").html(convert(obj.ohms) + ' Ω');
+                    $("#tolerance").html('± ' + obj.tolerance + '%');
+                    $("#low").html(convert(obj.low) + ' Ω');
+                    $("#high").html(convert(obj.high) + ' Ω');
+                });
+            }
         }
     }
 
