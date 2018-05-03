@@ -15,6 +15,6 @@ Email me with any questions vmguadalupe@yahoo.com.
 
 Below are some screenshots:
 
-![alt text](https://raw.githubusercontent.com/EspressoBeans/la-resistance/master/git_resources/screenshot_main.png)
+![Main Screenshot](https://raw.githubusercontent.com/EspressoBeans/la-resistance/master/git_resources/screenshot.png)
 
-![alt text](https://raw.githubusercontent.com/EspressoBeans/la-resistance/master/git_resources/screenshot_main_dd_example.png)
+![Additional Screenshot](https://raw.githubusercontent.com/EspressoBeans/la-resistance/master/git_resources/screenshot_dd_example.png)
